@@ -1,54 +1,52 @@
+import java.util.Stack;
+
 /**
- * MAIN CLASS: UseCase4PalindromeCheckerApp
- * Use Case 4: Character Array Based Validation
+ * MAIN CLASS: UseCase5PalindromeCheckerApp
+ *
+ * Use Case 5: Stack Based Validation
  *
  * Description:
- * This class validates a palindrome by converting
- * the string into a character array and comparing
- * characters using the two-pointer technique.
+ * This class validates a palindrome using Stack.
  *
  * At this stage, the application:
- * - Converts string to char array
- * - Uses start and end pointers
- * - Compares characters efficiently
+ * - Pushes characters into stack
+ * - Pops them in reverse order
+ * - Compares with original sequence
  * - Displays the result
  *
- * This reduces extra memory usage.
+ * This stack uses reverse logic (LIFO).
  *
- * @author Developer
- * @version 4.0
+ * @author Arjun Tyagi
+ * @version 5.0
  */
-public class PalindroneCheckerApp {
+public class UseCase5PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC4.
-     * @param args Command-line arguments
-     */
     public static void main(String[] args) {
 
-        String input = "radar";
-        char[] chars = input.toCharArray();
 
-        int start = 0;
-        int end = chars.length - 1;
+        String input = "noon";
+
+
+        Stack<Character> stack = new Stack<>();
+
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
 
         boolean isPalindrome = true;
 
-
-        while (start < end) {
-            if (chars[start] != chars[end]) {
+g.
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
-
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
-        } else {
-            System.out.println(input + " is NOT a Palindrome.");
-        }
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome?:");
+        System.out.println(isPalindrome);
     }
 }
