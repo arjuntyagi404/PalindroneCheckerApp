@@ -19,7 +19,7 @@ import java.util.Stack;
  * @author Arjun Tyagi
  * @version 5.0
  */
-public class UseCase5PalindromeCheckerApp {
+public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
 
@@ -37,7 +37,7 @@ public class UseCase5PalindromeCheckerApp {
 
         boolean isPalindrome = true;
 
-g.
+
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
                 isPalindrome = false;
