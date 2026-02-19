@@ -1,71 +1,54 @@
-/*
-use case 1: Application Entry point
-
-
-public class PalindroneCheckerApp {
-    public static void main(String[] args) {
-        System.out.println("Welcome to the Palindrome Checker Management System" +
-                "\nVersion : 1.0" +
-                "\nSystem initialized successfully");
-    }
-}
-
-
+/**
+ * MAIN CLASS: UseCase4PalindromeCheckerApp
+ * Use Case 4: Character Array Based Validation
+ *
+ * Description:
+ * This class validates a palindrome by converting
+ * the string into a character array and comparing
+ * characters using the two-pointer technique.
+ *
+ * At this stage, the application:
+ * - Converts string to char array
+ * - Uses start and end pointers
+ * - Compares characters efficiently
+ * - Displays the result
+ *
+ * This reduces extra memory usage.
+ *
+ * @author Developer
+ * @version 4.0
  */
-
-
-/* import java.util.Scanner;
-
 public class PalindroneCheckerApp {
+
+    /**
+     * Application entry point for UC4.
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter a word: ");
-        String str = sc.nextLine();
+        String input = "radar";
+        char[] chars = input.toCharArray();
 
-        String rev = "";
+        int start = 0;
+        int end = chars.length - 1;
 
-        for (int i = str.length() - 1; i >= 0; i--) {
-            rev = rev + str.charAt(i);
+        boolean isPalindrome = true;
+
+
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        if (str.equals(rev)) {
-            System.out.println("Palindrome");
+
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
         } else {
-            System.out.println("Not Palindrome");
+            System.out.println(input + " is NOT a Palindrome.");
         }
-
-        sc.close();
     }
 }
-*/
-
-import java.util.Scanner;
-
-public class PalindroneCheckerApp {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter a string: ");
-        String original = sc.nextLine();
-
-        String reversed = "";
-
-
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
-        }
-
-        if (original.equals(reversed)) {
-            System.out.println("The string is a Palindrome.");
-        } else {
-            System.out.println("The string is NOT a Palindrome.");
-        }
-
-        sc.close();
-    }
-}
-
-
-
-
