@@ -13,24 +13,30 @@ public class PalindroneCheckerApp {
 
  */
 
+
+import java.util.Scanner;
+
 public class PalindroneCheckerApp {
-
-    public static boolean isPalindrome(String str) {
-        int n = str.length();
-        for (int i = 0; i < n / 2; i++) {
-
-            if (str.charAt(i) != str.charAt(n - i - 1)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static void main(String[] args) {
-        String word1 = "madam";
-        String word2 = "hello";
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(word1 + " is a palindrome: " + isPalindrome(word1));
-        System.out.println(word2 + " is a palindrome: " + isPalindrome(word2));
+        System.out.print("Enter a word: ");
+        String str = sc.nextLine();
+
+        String rev = "";
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+
+        if (str.equals(rev)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
+
+        sc.close();
     }
 }
+
+
