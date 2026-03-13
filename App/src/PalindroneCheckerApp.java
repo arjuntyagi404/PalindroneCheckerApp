@@ -1,33 +1,56 @@
-import java.util.Scanner;
-
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Stack;
 public class PalindroneCheckerApp {
 
+    /*
+    UC12
+     */
+
+
+
+
     public static void main(String[] args) {
+        String input = "level";
 
-        Scanner scanner = new Scanner(System.in);
+        // Use the Stack-based strategy
+        PalindromeStrategy strategy = new StackStrategy();
+        boolean isPalindrome = strategy.check(input);
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+}
+
+/**
+ * Interface for Palindrome Validation Strategies.
+ */
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
 
-        System.out.print("Input: ");
-        String input = scanner.nextLine();
+class StackStrategy implements PalindromeStrategy {
 
+    @Override
+    public boolean check(String input) {
+        // Create a stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        // Push each character of the input string onto the stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
-        boolean isPalindrome = true;
-
-
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+        // Compare characters by popping from the stack
+        for (char c : input.toCharArray()) {
+            // If the current character doesn't match the popped character, it's not a palindrome
+            if (c != stack.pop()) {
+                return false;
             }
         }
 
-
-        System.out.println("Is Palindrome? " + isPalindrome);
-
-        scanner.close();
+        return true;
     }
 }
