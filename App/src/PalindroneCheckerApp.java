@@ -1,65 +1,33 @@
-/**
- * MAIN CLASS: UseCase13PalindromeCheckerApp
- * Use Case 13: Performance Comparison
- *
- * Description:
- * This class measures and compares the execution performance
- * of palindrome validation algorithms.
- *
- * At this stage, the application:
- *  - Uses a palindrome strategy implementation
- *  - Captures execution start and end time
- *  - Calculates total execution duration
- *  - Displays benchmarking results
- *
- * This use case focuses purely on performance measurement
- * and algorithm comparison concepts.
- *
- * @author Developer
- * @version 13.0
- */
+import java.util.Scanner;
 
 public class PalindroneCheckerApp {
 
-    /**
-     * Application entry point
-     * @param args Command-Line arguments
-     */
     public static void main(String[] args) {
 
-        String input = "level";
-        System.out.println("Input: " + input);
+        Scanner scanner = new Scanner(System.in);
 
-        long startTime = System.nanoTime();
 
-        boolean result = checkPalindrome(input);
+        System.out.print("Input: ");
+        String input = scanner.nextLine();
 
-        long endTime = System.nanoTime();
 
-        long executionTime = endTime - startTime;
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        System.out.println("Is Palindrome?: " + result);
-        System.out.println("Execution Time: " + executionTime + " ns");
-    }
+        boolean isPalindrome = true;
 
-    /**
-     * Simple Two-Pointer Palindrome Algorithm
-     */
-    private static boolean checkPalindrome(String input) {
 
-        int start = 0;
-        int end = input.length() - 1;
+        for (int i = 0; i < normalized.length() / 2; i++) {
 
-        while (start < end) {
 
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
             }
-
-            start++;
-            end--;
         }
 
-        return true;
+
+        System.out.println("Is Palindrome? " + isPalindrome);
+
+        scanner.close();
     }
 }
